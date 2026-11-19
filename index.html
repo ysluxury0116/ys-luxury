@@ -3,273 +3,659 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Y&S Luxury | Belleza Consciente & Glow Up Integral</title>
+  <title>Y&S Luxury | Glow Up Consciente & Belleza Femenina</title>
   <style>
     :root {
-      --bg: #faf7f4;
+      --bg-pastel: #fff5f8;
+      --bg-blush: #ffe8f0;
       --card: #ffffff;
-      --primary: #8c5e58;
-      --accent: #c59b76;
-      --text: #2d2624;
-      --muted: #6e6360;
+      --rose-deep: #d64b7a;
+      --rose-vibrant: #ff6b9d;
+      --rose-soft: #ffb3cb;
+      --cherry: #c9184a;
+      --sparkle: #ffd166;
+      --text: #3a232d;
+      --muted: #7a5565;
       --whatsapp: #25D366;
     }
-    * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-    body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    * { box-sizing: border-box; font-family: 'Segoe UI', 'Poppins', sans-serif; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #fff5f8 0%, #ffeef4 45%, #fff9fb 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Brillos y cerezas decorativas flotantes */
+    .decor-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .floating-item {
+      position: absolute;
+      opacity: 0.55;
+      animation: floatSparkle 7s ease-in-out infinite;
+      filter: drop-shadow(0 4px 10px rgba(255, 107, 157, 0.25));
+    }
+
+    .f1 { top: 8%; left: 5%; font-size: 1.6rem; animation-delay: 0s; }
+    .f2 { top: 16%; right: 7%; font-size: 1.4rem; animation-delay: 1.2s; }
+    .f3 { top: 42%; left: 3%; font-size: 1.3rem; animation-delay: 2.1s; }
+    .f4 { top: 58%; right: 4%; font-size: 1.7rem; animation-delay: 0.8s; }
+    .f5 { top: 78%; left: 6%; font-size: 1.5rem; animation-delay: 2.8s; }
+    .f6 { top: 86%; right: 8%; font-size: 1.3rem; animation-delay: 1.7s; }
+
+    @keyframes floatSparkle {
+      0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+      50% { transform: translateY(-12px) rotate(8deg) scale(1.08); }
+    }
+
+    header, .hero, section, footer, .wpp-float {
+      position: relative;
+      z-index: 1;
+    }
+
     header {
-      background: #1f1a19; color: #fff; padding: 1.2rem 2rem;
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 2px solid var(--rose-soft);
+      box-shadow: 0 6px 24px rgba(214, 75, 122, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
-    header h1 { margin: 0; font-size: 1.5rem; letter-spacing: 2px; color: var(--accent); }
-    nav a { color: #fff; text-decoration: none; margin-left: 1.2rem; font-size: 0.95rem; }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.55rem;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, var(--cherry), var(--rose-vibrant), #e07a5f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      margin-left: 1.2rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--rose-deep); }
+
     .hero {
-      text-align: center; padding: 3.5rem 1.5rem;
-      background: linear-gradient(135deg, #f3ebe4 0%, #e7d8cc 100%);
+      text-align: center;
+      padding: 3.6rem 1.5rem 3rem;
+      background: radial-gradient(circle at top, #ffd9e8 0%, #ffeef4 55%, transparent 100%);
     }
-    .hero h2 { font-size: 2.1rem; max-width: 700px; margin: 0 auto 1rem; color: var(--primary); }
-    .hero p { max-width: 650px; margin: 0 auto 1.5rem; color: var(--muted); }
+
+    .pill-badge {
+      display: inline-block;
+      background: #fff;
+      color: var(--cherry);
+      border: 1.5px solid var(--rose-soft);
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 14px rgba(255, 107, 157, 0.16);
+    }
+
+    .hero h2 {
+      font-size: 2.25rem;
+      max-width: 740px;
+      margin: 0 auto 1rem;
+      color: var(--cherry);
+      line-height: 1.25;
+    }
+
+    .hero p {
+      max-width: 660px;
+      margin: 0 auto 1.6rem;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
     .btn {
-      display: inline-block; padding: 0.85rem 1.6rem; border-radius: 30px;
-      text-decoration: none; font-weight: 600; cursor: pointer; border: none; transition: 0.2s;
+      display: inline-block;
+      padding: 0.85rem 1.65rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-size: 0.95rem;
     }
-    .btn-primary { background: var(--primary); color: #fff; }
-    .btn-primary:hover { opacity: 0.9; }
-    .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; margin-left: 0.5rem; }
-    section { max-width: 1100px; margin: 2.5rem auto; padding: 0 1.5rem; }
-    .section-title { text-align: center; color: var(--primary); margin-bottom: 1.5rem; }
-    
-    /* Diagnóstico IA */
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(214, 75, 122, 0.22);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--rose-vibrant), var(--cherry));
+      color: #fff;
+    }
+
+    .btn-soft {
+      background: #fff;
+      color: var(--cherry);
+      border: 2px solid var(--rose-vibrant);
+      margin-left: 0.5rem;
+    }
+
+    .btn-wpp {
+      background: var(--whatsapp);
+      color: #fff;
+    }
+
+    section {
+      max-width: 1120px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--cherry);
+      margin-bottom: 1.5rem;
+      font-size: 1.75rem;
+    }
+
+    /* Caja IA Glow Up */
     .ia-box {
-      background: var(--card); border-radius: 16px; padding: 2rem;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.06); border-top: 4px solid var(--accent);
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 24px;
+      padding: 2.2rem;
+      box-shadow: 0 12px 35px rgba(214, 75, 122, 0.12);
+      border: 2px solid var(--rose-soft);
     }
-    .ia-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1rem; }
-    label { font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem; }
+
+    .ia-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--text);
+    }
+
     select, textarea {
-      width: 100%; padding: 0.7rem; border: 1px solid #ddd; border-radius: 8px; font-size: 0.95rem;
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border: 1.5px solid #f5c6d6;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      background: #fffafc;
+      color: var(--text);
     }
+
+    select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--rose-vibrant);
+      box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.18);
+    }
+
+    /* Panel de Análisis Completo en Pantalla */
     .ia-result {
-      margin-top: 1.5rem; padding: 1.2rem; background: #f8f2ec;
-      border-left: 4px solid var(--primary); border-radius: 8px; display: none;
+      margin-top: 1.8rem;
+      padding: 1.6rem;
+      background: linear-gradient(135deg, #fff0f5 0%, #ffe3ed 100%);
+      border: 2px solid var(--rose-vibrant);
+      border-radius: 20px;
+      display: none;
+      animation: fadeInUp 0.35s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .analysis-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.1rem 1.3rem;
+      margin-top: 0.9rem;
+      border-left: 5px solid var(--rose-vibrant);
+      box-shadow: 0 4px 14px rgba(214, 75, 122, 0.06);
+    }
+
+    .analysis-card h5 {
+      margin: 0 0 0.35rem;
+      color: var(--cherry);
+      font-size: 1rem;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.2rem;
     }
 
     /* Marcas */
-    .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; }
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.3rem;
+    }
+
     .brand-card {
-      background: var(--card); padding: 1.5rem; border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 22px rgba(214, 75, 122, 0.08);
+      border: 1.5px solid #ffd6e5;
+      transition: transform 0.2s;
     }
-    .brand-card h3 { margin-top: 0; color: var(--primary); border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
-    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .brand-card:hover { transform: translateY(-4px); }
+
+    .brand-card h3 {
+      margin-top: 0;
+      color: var(--cherry);
+      border-bottom: 2px dashed #ffc2d6;
+      padding-bottom: 0.5rem;
+      font-size: 1.15rem;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
     .tag {
-      background: #f3ebe4; color: var(--text); padding: 0.3rem 0.7rem;
-      border-radius: 20px; font-size: 0.82rem; font-weight: 500;
+      background: #fff0f5;
+      color: var(--text);
+      border: 1px solid #ffc2d6;
+      padding: 0.32rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
     }
 
-    /* Productos ejemplo */
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    /* Productos */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+    }
+
     .product {
-      background: var(--card); border-radius: 12px; padding: 1.2rem;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;
+      background: var(--card);
+      border-radius: 20px;
+      padding: 1.3rem;
+      box-shadow: 0 8px 24px rgba(214, 75, 122, 0.09);
+      border: 1.5px solid #ffd6e5;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s;
     }
-    .badge {
-      display: inline-block; background: #e8f5e9; color: #2e7d32;
-      font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 12px; font-weight: bold;
-    }
-    .price { font-size: 1.2rem; font-weight: bold; color: var(--primary); margin: 0.5rem 0; }
 
-    /* Botón flotante WhatsApp */
-    .wpp-float {
-      position: fixed; bottom: 20px; right: 20px; background: var(--whatsapp);
-      color: #fff; padding: 0.9rem 1.3rem; border-radius: 50px; text-decoration: none;
-      font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 999;
+    .product:hover { transform: translateY(-4px); }
+
+    .badge {
+      display: inline-block;
+      background: #ffe3ed;
+      color: var(--cherry);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      font-weight: 700;
     }
-    footer { background: #1f1a19; color: #ccc; text-align: center; padding: 2rem 1rem; margin-top: 3rem; }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--cherry);
+      margin: 0.6rem 0;
+    }
+
+    .wpp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--whatsapp);
+      color: #fff;
+      padding: 0.9rem 1.35rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
+      z-index: 999;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #591c34, #8f2d56);
+      color: #fff0f5;
+      text-align: center;
+      padding: 2.2rem 1rem;
+      margin-top: 3.5rem;
+      border-top: 4px solid var(--rose-soft);
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Y&S LUXURY</h1>
-  <nav>
-    <a href="#diagnostico">Diagnóstico IA</a>
-    <a href="#marcas">Nuestras Marcas</a>
-    <a href="#catalogo">Catálogo</a>
-    <a href="#consulta">Consulta Psicológica</a>
-  </nav>
-</header>
-
-<div class="hero">
-  <h2>Tu Glow Up real empieza desde adentro</h2>
-  <p>No necesitas miles de productos por tendencia. En Y&S Luxury combinamos acompañamiento consciente con marcas 100% originales para crear rutinas responsables que sí transforman.</p>
-  <a href="#diagnostico" class="btn btn-primary">Hacer mi Diagnóstico IA</a>
-  <a href="https://wa.me/573136501713?text=Hola%20Y%26S%20Luxury%2C%20quisiera%20una%20asesor%C3%ADa%20personalizada" target="_blank" class="btn btn-outline">Hablar por WhatsApp</a>
-</div>
-
-<!-- SECCIÓN IA GLOW UP -->
-<section id="diagnostico">
-  <div class="ia-box">
-    <h2 class="section-title" style="margin-top:0;">Espacio de Glow Up Consciente (Asesoría IA)</h2>
-    <p style="text-align:center; color:var(--muted);">Cuéntame cómo te sientes y qué buscas lograr. Analizaremos tus hábitos y necesidades reales para recomendarte solo lo esencial.</p>
-    
-    <div style="margin-bottom:1rem;">
-      <label>1. Desahógate con confianza: ¿Cómo te sientes hoy y qué cambio real deseas ver en ti?</label>
-      <textarea id="emocion" rows="2" placeholder="Ej: Me siento agotada, he comprado muchas cosas sin ver resultados y quiero algo práctico..."></textarea>
-    </div>
-
-    <div class="ia-grid">
-      <div>
-        <label>2. Tiempo real para tu rutina diaria:</label>
-        <select id="tiempo">
-          <option value="5 min">5 minutos (Práctico, 2 pasos clave)</option>
-          <option value="15 min">10 a 15 minutos (Ritual tranquilo)</option>
-          <option value="30 min">Disfruto rituales largos de autocuidado</option>
-        </select>
-      </div>
-      <div>
-        <label>3. Área que deseas priorizar hoy:</label>
-        <select id="area">
-          <option value="capilar">Cuidado Capilar (Crecer, reparar o rizos/afro)</option>
-          <option value="skincare">Skincare / Acné persistente</option>
-          <option value="maquillaje">Maquillaje que cuide mi piel</option>
-        </select>
-      </div>
-      <div>
-        <label>4. Presupuesto consciente:</label>
-        <select id="presupuesto">
-          <option value="esencial">Esencial ($40.000 - $90.000 COP)</option>
-          <option value="intermedio">Intermedio ($90.000 - $180.000 COP)</option>
-          <option value="dermo">Tratamiento especializado / Dermocosmético (+$180.000 COP)</option>
-        </select>
-      </div>
-    </div>
-
-    <div style="text-align:center; margin-top:1.5rem;">
-      <button class="btn btn-primary" onclick="generarDiagnostico()">Recibir mi Rutina Esencial</button>
-    </div>
-
-    <div id="resultadoIA" class="ia-result"></div>
+  <!-- Decoración de cerezas y brillos -->
+  <div class="decor-layer" aria-hidden="true">
+    <div class="floating-item f1">🍒✨</div>
+    <div class="floating-item f2">✨💖</div>
+    <div class="floating-item f3">🌸✨</div>
+    <div class="floating-item f4">🍒💫</div>
+    <div class="floating-item f5">✨🎀</div>
+    <div class="floating-item f6">🍒✨</div>
   </div>
-</section>
 
-<!-- MARCAS MULTIMARCA -->
-<section id="marcas">
-  <h2 class="section-title">Marcas 100% Originales y Verificadas (INVIMA)</h2>
-  <div class="brands-grid">
-    <div class="brand-card">
-      <h3>Cuidado Capilar & Afro</h3>
-      <div class="tags">
-        <span class="tag">Click Hair</span><span class="tag">Milagros</span><span class="tag">Magic Hair</span>
-        <span class="tag">Lluvia de Estrellas</span><span class="tag">Anyeluz</span><span class="tag">Origen Botánico</span>
-        <span class="tag">Mariana Zapata</span><span class="tag">Esencia Salvaje</span><span class="tag">Kaba</span>
-        <span class="tag">La Poción</span><span class="tag">Purpure</span><span class="tag">Curly Lovers (Afro/Rizos)</span>
-      </div>
-    </div>
-    <div class="brand-card">
-      <h3>Maquillaje Multimarca</h3>
-      <div class="tags">
-        <span class="tag">Montoc</span><span class="tag">Atenea</span><span class="tag">Bloomshell</span>
-        <span class="tag">Trendy</span><span class="tag">Ame</span><span class="tag">Ani-K</span>
-        <span class="tag">MyK</span><span class="tag">Girly</span><span class="tag">Prosa</span>
-        <span class="tag">OG</span><span class="tag">Lula</span>
-      </div>
-    </div>
-    <div class="brand-card">
-      <h3>Skincare & Especializado</h3>
-      <div class="tags">
-        <span class="tag">Ailovi</span>
-        <span class="tag">Mary Kay (Línea Dermatológica / Acné)</span>
-      </div>
-    </div>
+  <header>
+    <h1>🍒 Y&S LUXURY ✨</h1>
+    <nav>
+      <a href="#diagnostico">Glow Up IA</a>
+      <a href="#marcas">Marcas</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#consulta">Consulta</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="pill-badge">✨ Belleza Consciente • 100% Originales (INVIMA) • De Adentro Hacia Afuera 🍒</div>
+    <h2>Tu Glow Up real comienza cuando eliges lo que sí necesitas</h2>
+    <p>Sin compras impulsivas ni imitaciones. En <strong>Y&S Luxury</strong> unimos escucha empática, análisis de ingredientes y marcas auténticas para rutinas responsables que brillan contigo.</p>
+    <a href="#diagnostico" class="btn btn-primary">✨ Hacer mi Análisis de Glow Up</a>
+    <a href="https://wa.me/573136501713?text=Hola%20Y%26S%20Luxury%20%F0%9F%8D%92%E2%9C%A8%2C%20quisiera%20una%20asesor%C3%ADa%20personalizada" target="_blank" class="btn btn-soft">💬 Ir a WhatsApp</a>
   </div>
-</section>
 
-<!-- CATÁLOGO CON COMPRA DIRECTA A WHATSAPP / PASARELA -->
-<section id="catalogo">
-  <h2 class="section-title">Productos Destacados & Comparativa de Activos</h2>
-  <div class="products-grid">
-    <div class="product">
-      <div>
-        <span class="badge">100% Original • INVIMA</span>
-        <h4>Shampoo Leche y Proteínas - Click Hair</h4>
-        <p style="font-size:0.88rem; color:var(--muted);"><strong>Activo:</strong> Péptidos y ceramidas. Ideal para cabello poroso, quebradizo o con procesos químicos.</p>
+  <!-- DIAGNÓSTICO IA CON ANÁLISIS EN PANTALLA -->
+  <section id="diagnostico">
+    <div class="ia-box">
+      <h2 class="section-title" style="margin-top:0;">✨ Espacio de Glow Up Consciente 🍒</h2>
+      <p style="text-align:center; color:var(--muted); margin-bottom:1.4rem;">Cuéntame cómo estás y qué buscas. Primero verás aquí mismo tu análisis, rutina recomendada y comparativa; luego podrás enviarlo a WhatsApp o pedir tus productos.</p>
+
+      <div style="margin-bottom:1rem;">
+        <label>1. Desahógate con confianza: ¿Cómo te sientes hoy y qué cambio real quieres lograr?</label>
+        <textarea id="emocion" rows="2" placeholder="Ej: Estoy cansada de comprar cosas que no me sirven, quiero verme más fresca y cuidar mi cabello..."></textarea>
       </div>
-      <div>
-        <div class="price">$52.900 COP</div>
-        <a href="https://wa.me/573136501713?text=Hola%20Y%26S%20Luxury%2C%20quiero%20comprar%20el%20Shampoo%20Leche%20y%20Prote%C3%ADnas%20de%20Click%20Hair" target="_blank" class="btn btn-primary" style="width:100%; text-align:center;">Pedir / Pagar ahora</a>
+
+      <div class="ia-grid">
+        <div>
+          <label>2. Tiempo real diario para tu rutina:</label>
+          <select id="tiempo">
+            <option value="5 minutos">5 minutos (Práctica, 2 pasos esenciales)</option>
+            <option value="10 a 15 minutos">10 a 15 minutos (Ritual tranquilo)</option>
+            <option value="20+ minutos">20+ minutos (Ritual completo de desconexión)</option>
+          </select>
+        </div>
+
+        <div>
+          <label>3. Área que deseas trabajar hoy:</label>
+          <select id="area">
+            <option value="capilar">Cabello (Crecimiento, reparación o afro/rizos)</option>
+            <option value="skincare">Skincare / Acné de larga duración</option>
+            <option value="maquillaje">Maquillaje consciente (Piel sana y luminosa)</option>
+          </select>
+        </div>
+
+        <div>
+          <label>4. Detalle de tu necesidad actual:</label>
+          <select id="necesidad">
+            <option value="afro_rizos">Cabello afro o rizado (hidratación, definición y frizz)</option>
+            <option value="crecimiento_dano">Cabello debilitado, caída o daño por procesos</option>
+            <option value="acne_prolongado">Acné de mucho tiempo / cuidado dermatológico</option>
+            <option value="hidratacion_glow">Luminosidad, hidratación y acabado natural</option>
+          </select>
+        </div>
+
+        <div>
+          <label>5. Presupuesto consciente:</label>
+          <select id="presupuesto">
+            <option value="esencial">Esencial ($35.000 - $85.000 COP)</option>
+            <option value="intermedio">Intermedio ($85.000 - $175.000 COP)</option>
+            <option value="especializado">Tratamiento especializado / Mary Kay (+$175.000 COP)</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:1.6rem;">
+        <button type="button" class="btn btn-primary" onclick="analizarGlowUp()">✨ Analizar mi Caso y Crear mi Rutina</button>
+      </div>
+
+      <div id="resultadoIA" class="ia-result"></div>
+    </div>
+  </section>
+
+  <!-- MARCAS -->
+  <section id="marcas">
+    <h2 class="section-title">🍒 Nuestras Marcas Multimarca 100% Originales ✨</h2>
+    <div class="brands-grid">
+      <div class="brand-card">
+        <h3>🎀 Cuidado Capilar & Afro/Rizos</h3>
+        <div class="tags">
+          <span class="tag">Click Hair</span>
+          <span class="tag">Milagros</span>
+          <span class="tag">Magic Hair</span>
+          <span class="tag">Lluvia de Estrellas</span>
+          <span class="tag">Anyeluz</span>
+          <span class="tag">Origen Botánico</span>
+          <span class="tag">Mariana Zapata</span>
+          <span class="tag">Esencia Salvaje</span>
+          <span class="tag">Kaba</span>
+          <span class="tag">La Poción</span>
+          <span class="tag">Purpure</span>
+          <span class="tag">Curly Lovers (Cabello Afro)</span>
+        </div>
+      </div>
+
+      <div class="brand-card">
+        <h3>💄 Maquillaje Multimarca</h3>
+        <div class="tags">
+          <span class="tag">Montoc</span>
+          <span class="tag">Atenea</span>
+          <span class="tag">Bloomshell</span>
+          <span class="tag">Trendy</span>
+          <span class="tag">Ame</span>
+          <span class="tag">Ani-K</span>
+          <span class="tag">MyK</span>
+          <span class="tag">Girly</span>
+          <span class="tag">Prosa</span>
+          <span class="tag">OG</span>
+          <span class="tag">Lula</span>
+        </div>
+      </div>
+
+      <div class="brand-card">
+        <h3>🌸 Skincare & Cuidado Especializado</h3>
+        <div class="tags">
+          <span class="tag">Ailovi</span>
+          <span class="tag">Mary Kay (Acné prolongado / Línea especializada)</span>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="product">
-      <div>
-        <span class="badge">100% Original • INVIMA</span>
-        <h4>Base Humide Skin Tint - Montoc</h4>
-        <p style="font-size:0.88rem; color:var(--muted);"><strong>Activo:</strong> Retinol vegetal. Maquillaje ligero que unifica sin obstruir poros.</p>
+  <!-- CATÁLOGO DESTACADO -->
+  <section id="catalogo">
+    <h2 class="section-title">✨ Selección Esencial con Activos Clave 🍒</h2>
+    <div class="products-grid">
+      <div class="product">
+        <div>
+          <span class="badge">100% Original • Afro & Rizos</span>
+          <h4>Línea Afro & Rizos - Curly Lovers / La Poción</h4>
+          <p style="font-size:0.88rem; color:var(--muted);"><strong>Componentes clave:</strong> Aceites nutritivos, mantecas vegetales e hidratantes sin apelmazar. Define, reduce el frizz y respeta la textura natural.</p>
+        </div>
+        <div>
+          <div class="price">Desde $42.000 COP</div>
+          <a href="https://wa.me/573136501713?text=Hola%20Y%26S%20Luxury%20%F0%9F%8D%92%2C%20quiero%20pedir%20productos%20para%20cabello%20afro%2Frural" target="_blank" class="btn btn-primary" style="width:100%; text-align:center;">Comprar por WhatsApp</a>
+        </div>
       </div>
-      <div>
-        <div class="price">$61.000 COP</div>
-        <a href="https://wa.me/573136501713?text=Hola%20Y%26S%20Luxury%2C%20quiero%20comprar%20la%20Base%20Humide%20de%20Montoc" target="_blank" class="btn btn-primary" style="width:100%; text-align:center;">Pedir / Pagar ahora</a>
+
+      <div class="product">
+        <div>
+          <span class="badge">100% Original • Reparación & Crecimiento</span>
+          <h4>Shampoo & Tratamientos - Click Hair / Milagros / Anyeluz</h4>
+          <p style="font-size:0.88rem; color:var(--muted);"><strong>Componentes clave:</strong> Péptidos, ceramidas, aloe vera y extractos botánicos para fortalecer y dar brillo sin saturar.</p>
+        </div>
+        <div>
+          <div class="price">Desde $35.900 COP</div>
+          <a href="https://wa.me/573136501713?text=Hola%20Y%26S%20Luxury%20%F0%9F%8D%92%2C%20quiero%20pedir%20cuidado%20capilar%20original" target="_blank" class="btn btn-primary" style="width:100%; text-align:center;">Comprar por WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="product">
+        <div>
+          <span class="badge">100% Original • Glow & Piel</span>
+          <h4>Bases, Tintas & Color - Montoc / Atenea / Trendy / Ani-K</h4>
+          <p style="font-size:0.88rem; color:var(--muted);"><strong>Componentes clave:</strong> Ácido hialurónico y retinol vegetal en fórmulas ligeras que cuidan la piel mientras embellecen.</p>
+        </div>
+        <div>
+          <div class="price">Desde $18.000 COP</div>
+          <a href="https://wa.me/573136501713?text=Hola%20Y%26S%20Luxury%20%F0%9F%8D%92%2C%20quiero%20pedir%20maquillaje%20original" target="_blank" class="btn btn-primary" style="width:100%; text-align:center;">Comprar por WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="product">
+        <div>
+          <span class="badge">Acné Prolongado • Asesoría</span>
+          <h4>Cuidado Especializado - Mary Kay & Ailovi</h4>
+          <p style="font-size:0.88rem; color:var(--muted);"><strong>Enfoque:</strong> <em>Ailovi</em> para frescura e hidratación diaria; <em>Mary Kay</em> como opción dermatológica de mayor inversión cuando se lleva tiempo luchando contra el acné.</p>
+        </div>
+        <div>
+          <div class="price">Asesoría Personalizada</div>
+          <a href="https://wa.me/573136501713?text=Hola%20Y%26S%20Luxury%20%F0%9F%8D%92%2C%20quiero%20asesor%C3%ADa%20para%20skincare%20o%20acn%C3%A9" target="_blank" class="btn btn-primary" style="width:100%; text-align:center;">Pedir Asesoría</a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="product">
-      <div>
-        <span class="badge">Tratamiento Especializado</span>
-        <h4>Sistema Control Acné - Mary Kay (Clear Proof)</h4>
-        <p style="font-size:0.88rem; color:var(--muted);"><strong>Activo:</strong> Ácido salicílico al 2%. Recomendado para acné persistente con acompañamiento constante.</p>
-      </div>
-      <div>
-        <div class="price">Consultar Kit</div>
-        <a href="https://wa.me/573136501713?text=Hola%20Y%26S%20Luxury%2C%20necesito%20asesor%C3%ADa%20para%20acn%C3%A9%20con%20Mary%20Kay" target="_blank" class="btn btn-primary" style="width:100%; text-align:center;">Recibir Asesoría</a>
-      </div>
+  <!-- CONSULTA PSICOLÓGICA -->
+  <section id="consulta">
+    <div class="ia-box" style="text-align:center; background:linear-gradient(135deg, #ffeaf2, #fff7fa);">
+      <h2 style="color:var(--cherry); margin-top:0;">💖 Acompañamiento Psicológico & Transformación Interna ✨</h2>
+      <p style="max-width:680px; margin:0 auto 1.3rem; color:var(--text);">Un <em>glow up</em> real no se queda solo en el espejo. Si deseas trabajar tu autoestima, manejo emocional o procesos personales más profundos conmigo, agenda tu espacio de consulta.</p>
+      <a href="https://wa.me/573136501713?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20consulta%20psicol%C3%B3gica%20contigo%20%F0%9F%92%96" target="_blank" class="btn btn-primary">🌸 Agendar Consulta Psicológica</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CONSULTA PSICOLÓGICA -->
-<section id="consulta">
-  <div class="ia-box" style="text-align:center; background:#f3ebe4;">
-    <h2 style="color:var(--primary); margin-top:0;">¿Buscas un acompañamiento más profundo?</h2>
-    <p style="max-width:650px; margin:0 auto 1.2rem;">Si sientes que tu proceso va más allá de una rutina física y deseas trabajar tu autoestima, gestión emocional o cierre de ciclos en un espacio profesional, agenda tu consulta psicológica individual conmigo.</p>
-    <a href="https://wa.me/573136501713?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20consulta%20psicol%C3%B3gica%20contigo" target="_blank" class="btn btn-primary">Agendar Consulta Psicológica</a>
-  </div>
-</section>
+  <a class="wpp-float" href="https://wa.me/573136501713?text=Hola%20Y%26S%20Luxury%20%F0%9F%8D%92%E2%9C%A8%2C%20vengo%20de%20la%20p%C3%A1gina%20web" target="_blank">💬 WhatsApp 313 650 1713</a>
 
-<a class="wpp-float" href="https://wa.me/573136501713?text=Hola%20Y%26S%20Luxury%2C%20vengo%20de%20la%20p%C3%A1gina%20web" target="_blank">WhatsApp Directo</a>
+  <footer>
+    <p><strong>🍒 Y&S LUXURY ✨</strong> • Belleza Consciente, Originalidad Garantizada y Bienestar Desde Adentro</p>
+    <p style="font-size:0.85rem;">WhatsApp Oficial: +57 313 650 1713 • Productos 100% originales con respaldo INVIMA</p>
+  </footer>
 
-<footer>
-  <p><strong>Y&S Luxury</strong> • Belleza Consciente, Originalidad Garantizada y Bienestar Integral</p>
-  <p style="font-size:0.85rem;">WhatsApp Oficial: +57 313 650 1713 | Productos 100% originales con Registro INVIMA</p>
-</footer>
+  <script>
+    function analizarGlowUp() {
+      const emocion = document.getElementById('emocion').value.trim();
+      const tiempo = document.getElementById('tiempo').value;
+      const area = document.getElementById('area').value;
+      const necesidad = document.getElementById('necesidad').value;
+      const presupuesto = document.getElementById('presupuesto').value;
+      const box = document.getElementById('resultadoIA');
 
-<script>
-  function generarDiagnostico() {
-    const emocion = document.getElementById('emocion').value.trim();
-    const tiempo = document.getElementById('tiempo').value;
-    const area = document.getElementById('area').value;
-    const presupuesto = document.getElementById('presupuesto').value;
-    const box = document.getElementById('resultadoIA');
+      let empatia = emocion
+        ? `Te escucho: <em>"${emocion}"</em>. Es completamente válido sentir cansancio o frustración cuando has intentado muchas cosas sin ver resultados claros.`
+        : `Es un gran momento para pausar, escucharte y construir una rutina amable contigo misma.`;
 
-    let recomendacion = "";
-    if (area === "capilar") {
-      recomendacion = "<strong>Rutina Esencial Capilar (2 pasos):</strong> Te sugerimos combinar un shampoo limpiador suave (como <em>Milagros</em> o <em>Anyeluz</em> para crecimiento, o <em>Click Hair</em> si hay daño químico) + tratamiento nutritivo (<em>La Poción</em>, <em>Kaba</em> o <em>Curly Lovers</em> si tu cabello es afro/rizado).";
-    } else if (area === "skincare") {
-      recomendacion = "<strong>Rutina Esencial Facial:</strong> Si es hidratación diaria, <em>Ailovi</em> te dará frescura sin saturar. Si llevas tiempo luchando con acné persistente, recomendamos la línea dermatológica de <em>Mary Kay</em> con seguimiento personalizado.";
-    } else {
-      recomendacion = "<strong>Maquillaje Consciente:</strong> Cambia bases pesadas por tintas con activos como <em>Montoc</em> (retinol vegetal) o <em>Atenea</em> (ácido hialurónico), complementando con <em>Trendy</em> o <em>Ani-K</em>.";
+      let rutinaHtml = "";
+      let comparativaHtml = "";
+      let habitoHtml = "";
+
+      if (area === "capilar" || necesidad === "afro_rizos" || necesidad === "crecimiento_dano") {
+        if (necesidad === "afro_rizos") {
+          rutinaHtml = `
+            <p><strong>1. Limpieza suave respetuosa:</strong> Shampoo/limpiador sin resecar (<em>Milagros</em> o <em>Origen Botánico</em>) para no retirar los aceites naturales.</p>
+            <p><strong>2. Nutrición y definición para cabello afro/rizado:</strong> Crema o tratamiento hidratante (<em>Curly Lovers</em>, <em>La Poción</em> o <em>Magic Hair</em>) con activos humectantes y emolientes para definir y controlar el frizz.</p>
+          `;
+          comparativaHtml = `
+            <p><strong>Opción práctica y económica:</strong> Fórmulas de uso diario con extractos botánicos que hidratan y suavizan sin sobrecargar.</p>
+            <p><strong>Opción de nutrición profunda:</strong> Tratamientos más concentrados en aceites/mantecas ideales si sientes sequedad extrema o porosidad alta, siempre verificando que sean 100% originales.</p>
+          `;
+        } else {
+          rutinaHtml = `
+            <p><strong>1. Limpieza y fortalecimiento:</strong> Shampoo de <em>Click Hair</em> (péptidos y ceramidas para fibra debilitada) o <em>Milagros / Anyeluz</em> (enfoque en crecimiento y brillo).</p>
+            <p><strong>2. Tratamiento focalizado:</strong> Mascarilla o tónico de <em>Kaba</em>, <em>Mariana Zapata</em>, <em>Esencia Salvaje</em>, <em>Lluvia de Estrellas</em> o <em>Purpure</em> según lo que pida tu hebra.</p>
+          `;
+          comparativaHtml = `
+            <p><strong>Comparativa de valor:</strong> Un producto más económico puede cumplir bien una función básica, mientras que líneas con activos reparadores específicos rinden mejor cuando hay daño por tintes o calor.</p>
+          `;
+        }
+        habitoHtml = "Al aplicar tu producto capilar, haz un masaje suave de 60 segundos respirando profundo y soltando la tensión del día.";
+      } else if (area === "skincare" || necesidad === "acne_prolongado") {
+        rutinaHtml = `
+          <p><strong>Paso 1 (Limpieza suave):</strong> Limpiadora diaria que no arrase la barrera de tu piel (<em>Ailovi</em> para cuidado diario o línea especializada <em>Mary Kay</em>).</p>
+          <p><strong>Paso 2 (Tratamiento según evolución):</strong> Si es un brote ocasional o hidratación ligera, prioriza rutinas sencillas. Si llevas <strong>mucho tiempo con acné</strong>, te recomiendo la línea dermatológica de <strong>Mary Kay</strong> (mayor inversión, pero formulada con activos dirigidos y constancia).</p>
+        `;
+        comparativaHtml = `
+          <p><strong>Diferencia clave en precio y enfoque:</strong> Las opciones de entrada como <em>Ailovi</em> son ideales para mantenimiento e hidratación accesible; <em>Mary Kay</em> implica una inversión mayor por su formulación especializada y seguimiento constante para pieles con acné prolongado.</p>
+        `;
+        habitoHtml = "Evita tocar tu rostro con ansiedad durante el día y recuerda que la piel sana responde a la constancia, no a cambiar de producto cada semana.";
+      } else {
+        rutinaHtml = `
+          <p><strong>1. Base o tinta con cuidado de piel:</strong> <em>Montoc</em> (con retinol vegetal) o <em>Atenea</em> (con ácido hialurónico) para un acabado luminoso y respirable.</p>
+          <p><strong>2. Toque de color y luz:</strong> Rubor, labial o iluminador de <em>Trendy</em>, <em>Ani-K</em>, <em>Ame</em>, <em>Bloomshell</em>, <em>MyK</em>, <em>Girly</em>, <em>Prosa</em>, <em>OG</em> o <em>Lula</em>.</p>
+        `;
+        comparativaHtml = `
+          <p><strong>Comparativa inteligente:</strong> Marcas como <em>Trendy</em> o <em>Girly</em> ofrecen excelente variedad y precio accesible; opciones como <em>Montoc</em> o <em>Atenea</em> destacan por incorporar ingredientes de cuidado facial en su fórmula.</p>
+        `;
+        habitoHtml = "Antes de maquillarte, mírate al espejo y elige un rasgo que quieras celebrar hoy en lugar de enfocarte solo en lo que quieres ocultar.";
+      }
+
+      const resumenTexto = `Hola Y&S Luxury 🍒✨, hice mi análisis en la web. Mi tiempo disponible es: ${tiempo}, mi enfoque es: ${necesidad} y mi presupuesto: ${presupuesto}. ${emocion ? 'Lo que compartí: ' + emocion : ''}`;
+      const linkWpp = `https://wa.me/573136501713?text=${encodeURIComponent(resumenTexto)}`;
+      const linkConsulta = `https://wa.me/573136501713?text=${encodeURIComponent("Hola, hice mi análisis en Y&S Luxury y me gustaría agendar una consulta psicológica contigo 💖")}`;
+
+      box.innerHTML = `
+        <h3 style="margin-top:0; color:var(--cherry);">🍒 Tu Análisis de Glow Up Consciente ✨</h3>
+        <p>${empatia} Con <strong>${tiempo}</strong> al día y un presupuesto <strong>${presupuesto}</strong>, lo más responsable es avanzar paso a paso con lo esencial.</p>
+
+        <div class="analysis-card">
+          <h5>🎀 1. Tu Rutina Esencial Recomendada (Sin saturarte)</h5>
+          ${rutinaHtml}
+        </div>
+
+        <div class="analysis-card">
+          <h5>⚖️ 2. Comparativa de Componentes, Precio y Originalidad</h5>
+          ${comparativaHtml}
+          <p style="font-size:0.88rem; color:var(--muted); margin-bottom:0;"><em>Nota: Todos nuestros productos son 100% originales con respaldo INVIMA para cuidar tu salud y evitar imitaciones.</em></p>
+        </div>
+
+        <div class="analysis-card">
+          <h5>🌸 3. Hábito Ancla (De Adentro Hacia Afuera)</h5>
+          <p style="margin-bottom:0;">${habitoHtml}</p>
+        </div>
+
+        <div class="action-row">
+          <a href="${linkWpp}" target="_blank" class="btn btn-wpp">💬 Enviar mi análisis y pedir por WhatsApp</a>
+          <a href="${linkConsulta}" target="_blank" class="btn btn-primary">💖 Quiero agendar consulta psicológica</a>
+        </div>
+      `;
+
+      box.style.display = "block";
+      box.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
-
-    const textoWpp = encodeURIComponent(`Hola Y&S Luxury, hice mi diagnóstico en la web. Mi enfoque es: ${area}, cuento con ${tiempo} al día y presupuesto ${presupuesto}. ${emocion ? 'Lo que siento: ' + emocion : ''}`);
-
-    box.innerHTML = `
-      <h4 style="margin-top:0; color:var(--primary);">Tu Plan de Glow Up Consciente</h4>
-      <p>Gracias por compartir tu proceso. Recuerda que para ver cambios reales con <strong>${tiempo}</strong> al día, la clave es la constancia con 2 o 3 productos exactos, no la cantidad.</p>
-      <p>${recomendacion}</p>
-      <a href="https://wa.me/573136501713?text=${textoWpp}" target="_blank" class="btn btn-primary" style="margin-top:0.5rem;">Enviar mi diagnóstico a WhatsApp para elegir mis productos</a>
-    `;
-    box.style.display = "block";
-  }
-</script>
+  </script>
 
 </body>
 </html>
